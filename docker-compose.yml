@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8
+    container_name: mysql_cucumber
+    environment:
+      MYSQL_ROOT_PASSWORD: cucumber
+      MYSQL_DATABASE: cucumber
+      MYSQL_USER: cucumber
+      MYSQL_PASSWORD: cucumber
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - cucumber-network
+
+networks:
+  cucumber-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
